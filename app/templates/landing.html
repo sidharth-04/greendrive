@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Green Drive</title>
+  </head>
+  <body>
+    <h1>Green Drive</h1>
+    <img id="truck" src="{{ url_for('static', filename='assets/GreenDriveLogo.png') }}" alt="">
+    <img id="leaves" src="{{ url_for('static', filename='assets/BackgroundLeaves.png') }}" alt="">
+    <button onclick="location.href = '{{ url_for('get_started') }}';" name="button">Get Started</button>
+    <button onclick="location.href = '{{ url_for('login') }}';" name="button">Sign In</button>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/landing.css">
+  <script src="../static/javascript/landing.js" charset="utf-8"></script>
+</html>

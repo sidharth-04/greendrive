@@ -1,20 +1,9 @@
 $(document).ready(() => {
-  let vendor = document.querySelector("#vendor");
-  let transporter = document.querySelector("#transporter");
-  vendor.addEventListener('click', (e) => {
-    $('#vendor').addClass('active');
-    $('#transporter').removeClass('active');
-  });
-  transporter.addEventListener('click', (e) => {
-    $('#transporter').addClass('active');
-    $('#vendor').removeClass('active');
-  });
-
   document.querySelector("#submit").addEventListener('click', (e) => {
     e.preventDefault();
     if (performValidation()) {
       submit();
-      window.location = "/login"
+      document.location = "/login";
     }
   });
 });

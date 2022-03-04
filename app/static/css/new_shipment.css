@@ -1,0 +1,96 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 10vw;
+  align-items: center;
+  width: 100%;
+  height: 7vh;
+  background-color: #ABEBD2;
+  font-size: 4vw;
+}
+nav a {
+  color: #58641D;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  margin: 0;
+}
+nav img {
+  width: 18vh;
+}
+p {
+  margin: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background-color: #E2FFF0;
+  font-family: 'Roboto', sans-serif;
+  margin: 0 10vw;
+  height: 100vh;
+  font-size: 5vw;
+}
+h1 {
+  font-size: 10vw;
+  font-weight: 400;
+  color: #58641D;
+}
+form {
+  width: 100%;
+}
+input:focus {
+  outline: none;
+}
+form input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 100%;
+  margin: 4vw 0;
+  font-size: 5vw;
+  font-weight: 300;
+}
+button {
+  padding: 3vw 0;
+  margin: 2vw 0;
+  width: 100%;
+  border-radius: 100px;
+  background-color: #007FAC;
+  color: white;
+  border: none;
+  font-size: 5vw;
+}
+.button-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2vw 0;
+}
+.button-holder > button {
+  width: 49%;
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+  transition: background-color 0.3s;
+}
+.button-holder > button.active {
+  border: none;
+  background-color: #ABEBD2;
+}
+body > a {
+  margin: auto;
+  color: #58641D;
+}
+table.ui-datepicker-calendar {
+  background-color: #A9F0D1;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+  background: #007FAC;
+  color: white;
+  border-radius: 10px;
+  border: none;
+}

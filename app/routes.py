@@ -63,7 +63,7 @@ def view_shipment(shipment_id):
         return redirect(url_for('landing'))
     if current_user.role == "transporter":
         return redirect(url_for("transporter_home"))
-    return render_template('view_shipment.html', name=current_user.name)
+    return render_template('view_shipment.html', name=current_user.name, id=shipment_id)
 
 @app.route('/new_shipment')
 def new_shipment():

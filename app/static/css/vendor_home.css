@@ -5,15 +5,18 @@ nav {
   padding: 0 10vw;
   align-items: center;
   width: 100vw;
-  height: 5vh;
+  height: 7vh;
   background-color: #ABEBD2;
-  font-size: 3vw;
+  font-size: 4vw;
 }
 a {
   color: #58641D;
   outline: none;
   border: none;
   text-decoration: none;
+}
+nav img {
+  width: 18vh;
 }
 p {
   margin: 0;

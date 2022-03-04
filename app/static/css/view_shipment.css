@@ -1,0 +1,135 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 10vw;
+  align-items: center;
+  width: 100vw;
+  height: 7vh;
+  background-color: #ABEBD2;
+  font-size: 4vw;
+}
+nav img {
+  margin-top: 1vh;
+  width: 18vh;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background-color: #E2FFF0;
+  font-family: 'Roboto', sans-serif;
+  margin: 0 10vw;
+  height: 100vh;
+}
+button {
+  padding: 2vw;
+  margin: 0;
+  width: 50%;
+  border-radius: 100px;
+  background-color: #007FAC;
+  color: white;
+  border: none;
+  font-size: 3vw;
+}
+a {
+  color: #58641D;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+p {
+  margin: 0;
+}
+.topholder {
+  margin-top: 2vw;
+}
+h1 {
+  font-size: 5vw;
+  color: #58641D;
+  font-weight: 400;
+}
+.topholder p {
+  font-size: 4vw;
+}
+.status-tag {
+  background-color: #D3E8DD;
+  border-radius: 10vw;
+  font-size: 4vw;
+  margin: 2vw;
+  padding: 2vw 5vw;
+  opacity: 0.6;
+}
+.midcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 2vw;
+}
+.midcontainer > p {
+  font-size: 4vw;
+  color: #007FAC;
+}
+.midcontainer .progressholder {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.journey-block {
+  background-color: #A9F0D1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 50px;
+  border: 1px solid #007FAC;
+}
+.journey-block img {
+  width: 10vw;
+  margin-bottom: 1vw;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 4vw;
+  padding: 0 10vw;
+  position: relative;
+  margin-top: 4vw;
+}
+.footer .trees {
+  width: 20vw;
+  position: absolute;
+  left: 0;
+}
+.footer .world-container {
+  width: 20vw;
+  height: 20vw;
+  margin: 4vw 2vw;
+  position: absolute;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+}
+.world-container .world {
+  width: 100%;
+}
+.world-container .carbon-text {
+  position: absolute;
+  top: 2vw;
+}
+.footer a {
+  text-decoration: underline;
+}

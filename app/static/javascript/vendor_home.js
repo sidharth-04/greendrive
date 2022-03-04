@@ -65,7 +65,10 @@ function drawShipments(shipments) {
   for (let i = 0; i < shipments.length; i ++) {
     $('.shipments-container').append("<div class='shipment'></div>");
     let current = $('.shipments-container .shipment').last();
-    current.append("<div class='topholder'><p>"+shipments[i].percentageComplete+"%</p><p>Shipment #"+shipments[i].id+"</p><a href='/view_shipment/"+1+"'>More Info</a></div>");
+    current.on('click', () => {
+      document.location = '/view_shipment/'+shipments[i].id;
+    });
+    current.append("<div class='topholder'><p>"+shipments[i].percentageComplete+"%</p><p>Shipment #"+shipments[i].id+"</p><a href='/view_shipment/"+shipments[i].id+"'>More Info</a></div>");
 
     let journey = shipments[i].journeyDistribution;
     let middleholder = "<div class='middleholder'>";

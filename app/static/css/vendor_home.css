@@ -38,6 +38,7 @@ h1 {
   overflow: auto;
   font-size: 10vw;
   width: 100%;
+  margin: 2vw 0;
 }
 .shipment {
   border-radius: 100px;
@@ -45,10 +46,52 @@ h1 {
   width: 100%;
   height: 30%;
   margin-bottom: 5vw;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  margin-bottom: 5vw;
+  padding: 4vw 8vw;
+
 }
-.shipment p {
-  font-size: 2vw;
+.topholder {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  margin-bottom: 2vw;
+  padding: 0;
+}
+.topholder, .bottomholder p {
+  font-size: 3vw;
   color: black;
+  margin: 0;
+}
+.topholder a {
+  font-size: 3vw;
+  color: #58641D;
+  margin: 0;
+}
+.middleholder {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.journey-block {
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4vw 0;
+}
+.journey-block img {
+  width: 8vw;
 }
 button {
   padding: 2.5vw 0;
@@ -59,4 +102,20 @@ button {
   color: white;
   border: none;
   font-size: 4vw;
+}
+.bottomholder {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.bottomholder button {
+  font-size: 3vw;
+  width: 55%;
+}
+.bottomholder .completed-shipment-tag {
+  background-color: #A7A7A7;
 }

@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Green Drive</title>
   </head>
   <body>
@@ -16,8 +17,14 @@
       <input type="text" id="pickupdate" name="pickupdate" placeholder="Pickup Date"><br>
       <input type="text" id="deliverydate" name="deliverydate" placeholder="Delivery Date"><br>
       <input type="text" id="cargoweight" name="cargoweight" placeholder="Cargo Weight"><br>
+      <input type="range" min="0" max="100" value="50" class="slider" id="rangeslider">
+      <div class="rangereader">
+        <p id="efficiency-level">efficiency: 50%</p>
+        <p id="sustainability-level">sustainability: 50%</p>
+      </div>
       <button id="submit">Create Shipment</button>
     </form>
+    <p style="color: red; text-align: center;" id="error-text"></p>
     <a href="{{ url_for('vendor_home') }}">Cancel</a>
   </body>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -25,6 +32,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/new_shipment.css">
+  <!-- <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg7aH2ScEfYO5G0nt2OpqjKnGzFxXFZcQ&libraries=places&callback=initAutocomplete"></script> -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="../static/javascript/new_shipment.js" charset="utf-8"></script>

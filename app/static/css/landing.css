@@ -11,9 +11,15 @@ body {
 h1 {
   font-size: 15vw;
   color: #58641D;
+  animation-name: fadein;
+  animation-duration: 500ms;
+  animation-delay: 200ms;
+  animation-fill-mode: backwards;
 }
 img#truck {
   width: 40vw;
+  animation-name: drivein;
+  animation-duration: 1s;
 }
 img#leaves {
   position: fixed;
@@ -26,8 +32,30 @@ button {
   margin: 2vw 0;
   width: 100%;
   border-radius: 100px;
-  background-color: #58641D;
+  background-color: #007FAC;
   color: white;
   border: none;
   font-size: 5vw;
+  animation-name: fadein;
+  animation-duration: 500ms;
+  animation-fill-mode: backwards;
+}
+
+@keyframes drivein {
+  from {
+    transform: translateX(-50vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes fadein {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

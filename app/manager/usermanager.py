@@ -2,17 +2,24 @@ from flask import url_for
 from flask_login import UserMixin, current_user, login_user
 from flask_login import UserMixin
 from app import login
-
-def create_new_account(info):
-    return True
+import requests
 
 def authenticate(username, password):
     # Should check if username and password match
     if username == "vendor" and password == "password":
         return True
-    if username == "transporter" and password == "password":
-        return True
-    return False
+    url = 'https://us-central1-eng-oven-342617.cloudfunctions.net/login'
+    json = {
+    	"username": username,
+    	"password": password,
+    	"sign_up": "false"
+    }
+    response = requests.post(url, data=json)
+    if response.text == "Invalid Request":
+        print("not valid username password")
+        return False
+    return True
+
 
 def authorize(username):
     login_user(User(username))

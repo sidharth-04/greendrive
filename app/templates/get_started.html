@@ -2,18 +2,21 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Green Drive</title>
   </head>
   <body>
     <h1>Information</h1>
     <form method="post">
-      <input type="text" id="name" name="name" placeholder="Name"><br>
-      <input type="text" id="businessname" name="businessname" placeholder="Business Name"><br>
-      <input type="text" id="number" name="number" placeholder="Number"><br>
-      <input type="text" id="uname" name="username" placeholder="Username"><br>
-      <input type="password" id="pword" name="password" placeholder="Password"><br>
+      <input autocomplete="off" type="text" id="name" name="name" placeholder="Name"><br>
+      <input autocomplete="off" type="text" id="businessname" name="businessname" placeholder="Business Name"><br>
+      <input autocomplete="off" type="text" id="number" name="number" placeholder="Number"><br>
+      <input autocomplete="off" type="text" id="uname" name="username" placeholder="Username"><br>
+      <input autocomplete="off" type="password" id="pword" name="password" placeholder="Password"><br>
       <button id="submit">Create Account</button>
     </form>
+
+    <p style="color: red; text-align: center;" id="error-text"></p>
 
     <a href="{{ url_for('landing') }}">Cancel</a>
 

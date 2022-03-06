@@ -2,12 +2,12 @@ $(document).ready(() => {
   info = {
   	pickupDate: "12/3/22",
     deliveryDate: "22/3/22",
-  	percentageComplete: 50,
+  	percentageComplete: 80,
   	carbonEmitted: 43,
   	journeyDistribution: [
-      ["van", 20, '1233234', 'fuel'],
+      ["bike", 20, '1233234', 'fuel'],
       ["truck", 50, '2324342', 'diesel'],
-      ["truck", 30, '1222344', 'hydrogen fusion']
+      ["helicopter", 30, '1222344', 'hydrogen fusion']
     ]
   }
 
@@ -34,12 +34,12 @@ function addElements() {
       fillWidth = leftToComplete/journey[i][1]*100;
       leftToComplete = 0;
     }
-    progressholder += "<div class='journey-block' style='background: linear-gradient(to bottom, #A9F0D1 0% "+fillWidth+"%, white "+fillWidth+"% 100%); height: "+journey[i][1]+"%'>";
-    progressholder += "<img src='../static/assets/TruckIcon.svg'>";
+    progressholder += "<div class='journey-block' style='animation-delay: "+(i*50)+"ms; background: linear-gradient(to bottom, #A9F0D1 0% "+fillWidth+"%, white "+fillWidth+"% 100%); height: "+journey[i][1]+"%'>";
+    progressholder += "<img src='../static/assets/"+journey[i][0]+".svg'>";
     progressholder += "<button>Contact: "+journey[i][2]+"</button>"
     progressholder += "</div>";
     if (i != journey.length-1) {
-      progressholder += "<img src='../static/assets/Connector.svg'>";
+      progressholder += "<img id='connector' src='../static/assets/Connector.svg'>";
     }
   }
   progressholder += "</div>";

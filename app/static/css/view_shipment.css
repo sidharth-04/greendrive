@@ -55,7 +55,7 @@ h1 {
 }
 .status-tag {
   background-color: #D3E8DD;
-  border-radius: 10vw;
+  border-radius: 100px;
   font-size: 4vw;
   margin: 2vw;
   padding: 2vw 5vw;
@@ -88,12 +88,21 @@ h1 {
   justify-content: center;
   align-items: center;
   width: 100%;
-  border-radius: 50px;
-  border: 1px solid #007FAC;
+  border-radius: 25px;
+  border: 1px solid rgba(0, 127, 172, 0.4);
+  animation-name: fadein;
+  animation-duration: 500ms;
+  animation-fill-mode: backwards;
 }
 .journey-block img {
   width: 10vw;
   margin-bottom: 1vw;
+}
+#connector {
+  animation-name: fadein;
+  animation-duration: 500ms;
+  animation-fill-mode: backwards;
+  animation-delay: 30ms;
 }
 .footer {
   position: fixed;
@@ -125,6 +134,10 @@ h1 {
 }
 .world-container .world {
   width: 100%;
+  animation-name: spin;
+  animation-duration: 10000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 .world-container .carbon-text {
   position: absolute;
@@ -132,4 +145,24 @@ h1 {
 }
 .footer a {
   text-decoration: underline;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadein {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

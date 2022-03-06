@@ -15,7 +15,7 @@ $(document).ready(() => {
       percentageComplete: 100,
       currentVendorNumber: "9499994456",
       journeyDistribution: [
-        ["van", 20],
+        ["truck", 20],
         ["truck", 50],
         ["truck", 30]
       ]
@@ -27,7 +27,7 @@ $(document).ready(() => {
       percentageComplete: 0,
       currentVendorNumber: "9499994456",
       journeyDistribution: [
-        ["van", 20],
+        ["truck", 20],
         ["truck", 50],
         ["truck", 30]
       ]
@@ -39,7 +39,7 @@ $(document).ready(() => {
       percentageComplete: 10,
       currentVendorNumber: "9499994456",
       journeyDistribution: [
-        ["van", 20],
+        ["truck", 20],
         ["truck", 50],
         ["truck", 30]
       ]
@@ -51,7 +51,7 @@ $(document).ready(() => {
       percentageComplete: 90,
       currentVendorNumber: "9499994456",
       journeyDistribution: [
-        ["van", 20],
+        ["truck", 20],
         ["truck", 50],
         ["truck", 30]
       ]
@@ -63,7 +63,11 @@ $(document).ready(() => {
 
 function drawShipments(shipments) {
   for (let i = 0; i < shipments.length; i ++) {
-    $('.shipments-container').append("<div class='shipment'></div>");
+    if (i == shipments.length-1) {
+      $('.shipments-container').append("<div style='animation-delay: "+(i*50)+"ms; margin-bottom: 0;' class='shipment'></div>");
+    } else {
+      $('.shipments-container').append("<div style='animation-delay: "+(i*50)+"ms;' class='shipment'></div>");
+    }
     let current = $('.shipments-container .shipment').last();
     current.on('click', () => {
       document.location = '/view_shipment/'+shipments[i].id;
@@ -81,7 +85,7 @@ function drawShipments(shipments) {
         fillWidth = leftToComplete/journey[j][1]*100;
         leftToComplete = 0;
       }
-      middleholder += "<div class='journey-block' style='background: linear-gradient(to right, #1ABCC3 0% "+fillWidth+"%, white "+fillWidth+"% 100%); width: "+journey[j][1]+"%'><img src='./static/assets/TruckIcon.svg'></div>";
+      middleholder += "<div class='journey-block' style='background: linear-gradient(to right, #1ABCC3 0% "+fillWidth+"%, white "+fillWidth+"% 100%); width: "+journey[j][1]+"%'><img src='./static/assets/"+journey[j][0]+".svg'></div>";
     }
     middleholder += "</div>";
     current.append(middleholder);

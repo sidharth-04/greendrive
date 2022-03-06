@@ -52,6 +52,7 @@ form input {
   margin: 4vw 0;
   font-size: 5vw;
   font-weight: 300;
+  border-bottom: 1px solid rgba(0, 127, 172, 0.4);
 }
 button {
   padding: 3vw 0;
@@ -62,6 +63,7 @@ button {
   color: white;
   border: none;
   font-size: 5vw;
+  margin-top: 5vw;
 }
 .button-holder {
   display: flex;
@@ -89,8 +91,49 @@ table.ui-datepicker-calendar {
   background-color: #A9F0D1;
 }
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
-  background: #007FAC;
-  color: white;
+  background: #A9F0D1;
+  border: 1px solid #007FAC;
   border-radius: 10px;
+}
+
+.slidecontainer {
+  width: 100%;
+}
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
   border: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  padding: 0;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04AA6D;
+  cursor: pointer;
+}
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #A9F0D1;
+  cursor: pointer;
+}
+
+.rangereader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* opacity: 0.7; */
+  font-size: 4vw;
+  color: grey;
 }

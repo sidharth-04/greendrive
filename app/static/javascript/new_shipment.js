@@ -10,9 +10,9 @@ $('document').ready(() =>{
   //   }
   // );
 
-  document.querySelector("#rangeslider").onchange = () => {
+  document.querySelector("#rangeslider").addEventListener('change', (e) => {
     updateRangeValues();
-  };
+  });
 
   document.querySelector("#submit").addEventListener('click', (e) => {
     e.preventDefault();

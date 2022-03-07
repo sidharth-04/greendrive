@@ -42,17 +42,15 @@ function submit(name, businessname, number, username, password) {
   };
 
   let xhr = new XMLHttpRequest();
-  url = 'https://us-central1-eng-oven-342617.cloudfunctions.net/function-1';
-  xhr.open('POST', url, true);
+  xhr.open('POST', '/get_started', true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onload = function() {
     let result = xhr.responseText;
-    console.log(result);
     if (result == "success") {
       document.location = "/login";
     } else {
       showError("Username already in use");
     }
   };
-  xhr.send(json);
+  xhr.send(JSON.stringify(json));
 }

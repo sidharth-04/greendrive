@@ -1,11 +1,12 @@
 $(document).ready(() => {
-  // let xhr = new XMLHttpRequest();
-  // xhr.open('GET','/get_module_status',true);
-  // xhr.setRequestHeader('Content-Type', 'application/json');
-  // xhr.onload = function() {
-  //   statusIndication(JSON.parse(xhr.response));
-  // };
-  // xhr.send(null);
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST','/vendor_home',true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onload = function() {
+    // let json = JSON.parse(xhr.response);
+    // console.log(json);
+  };
+  xhr.send(null);
 
   shipments = [
     {

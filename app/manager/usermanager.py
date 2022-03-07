@@ -6,17 +6,16 @@ import requests
 
 def authenticate(username, password):
     # Should check if username and password match
-    if username == "vendor" and password == "password":
-        return True
     url = 'https://us-central1-eng-oven-342617.cloudfunctions.net/login'
     json = {
     	"username": username,
     	"password": password,
     	"sign_up": "false"
     }
-    response = requests.post(url, data=json)
+    response = requests.post(url, params=json)
     if response.text == "Invalid Request":
-        print("not valid username password")
+        return False
+    if response.text == "Username does not exist":
         return False
     return True
 
@@ -28,21 +27,19 @@ def get_user_by_id(id):
     '''
     Returns a user object given a user id.
     '''
-    if id == 1:
-        username = "vendor"
-    else:
-        username = "transporter"
-    return User(username)
+    url = 'https://us-central1-eng-oven-342617.cloudfunctions.net/convert'
+    info = {'username': id, 'convert': '1'}
+    response = requests.post(url, params=info)
+    return User(response.text)
 
 def get_id_by_username(username):
     '''
     Returns a user id given a username.
     '''
-    if username == "vendor":
-        id = 1
-    else:
-        id = 2
-    return id
+    url = 'https://us-central1-eng-oven-342617.cloudfunctions.net/convert'
+    info = {'username': username, 'convert': '0'}
+    response = requests.post(url, params=info)
+    return response.text
 
 class User(UserMixin):
     '''
@@ -51,12 +48,8 @@ class User(UserMixin):
     def __init__(self, username):
         self.id = get_id_by_username(username)
         self.username = username
-        if self.id == 1:
-            self.role = "vendor"
-            self.name = "Lokesh"
-        else:
-            self.role = "transporter"
-            self.name = "Mangesh"
+        self.role = "vendor"
+        self.name = "hello"
 
     def get_id(self):
         '''

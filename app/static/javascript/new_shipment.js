@@ -65,18 +65,28 @@ async function performValidation() {
   let deliverydate = $("#deliverydate").val().trim();
   let cargoweight = $("#cargoweight").val().trim();
 
-  let srcCoords = await getLatlong(document.querySelector("#pickuploc").value);
-  let dstCoords = await getLatlong(document.querySelector("#destloc").value);
   if (pickuploc == "" || destloc == "" || pickupdate == "" || deliverydate == "" || cargoweight == "") {
     showError("Please fill in all the information correctly");
     return;
-  } else if (!(/^\d+$/.test(cargoweight))) {
-    showError("Please use a number only for cargo weight");
-  } else if (srcCoords == "not found" || dstCoords == "not found") {
-    showError("Please choose an appropriate place");
-  } else {
-    submit(srcCoords, dstCoords, pickupdate, deliverydate, cargoweight);
   }
+  if (!(/^\d+$/.test(cargoweight))) {
+    showError("Please use a number only for cargo weight");
+    return;
+  }
+  let srcCoords = "not found";
+  let dstCoords = "not found";
+  try {
+    srcCoords = await getLatlong(document.querySelector("#pickuploc").value);
+    dstCoords = await getLatlong(document.querySelector("#destloc").value);
+  } catch(error) {
+    showError("Please choose an appropriate place");
+    return;
+  }
+  if (srcCoords == "not found" || dstCoords == "not found") {
+    showError("Please choose an appropriate place");
+    return;
+  }
+  submit(srcCoords, dstCoords, pickupdate, deliverydate, cargoweight);
 }
 
 function showError(msg) {
@@ -89,13 +99,15 @@ function submit(srcCoords, dstCoords, pickupdate, deliverydate, cargoweight) {
   let time = sliderVal/100;
   let sustainability = (100-sliderVal)/100;
   json = {
-    "pickUpLocation": srcCoords,
-    "destination": dstCoords,
-    "pickupdate": pickupdate,
-    "deliverydate": deliverydate,
+    "pickUpLocation0": srcCoords[0],
+    "pickUpLocation1": srcCoords[1],
+    "destination0": dstCoords[0],
+    "destination1": dstCoords[1],
+    "pickUpDate": pickupdate,
+    "deliveryDate": deliverydate,
     "cargoweight": cargoweight,
-    "time": time,
-    "sustainability": sustainability
+    "time_fac": time,
+    "sustainability_fac": sustainability
   };
 
   console.log(json);
@@ -103,11 +115,11 @@ function submit(srcCoords, dstCoords, pickupdate, deliverydate, cargoweight) {
   xhr.open('POST', '/new_shipment', true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onload = function() {
-    // let result = xhr.responseText;
-    // console.log(result);
-    // if (result == "success") {
-    //   document.location = "/vendor_home";
-    // }
+    let result = xhr.responseText;
+    console.log(result);
+    if (result == "success") {
+      document.location = "/vendor_home";
+    }
   };
   xhr.send(JSON.stringify(json));
 }

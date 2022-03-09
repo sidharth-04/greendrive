@@ -3,67 +3,26 @@ $(document).ready(() => {
   xhr.open('POST','/vendor_home',true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onload = function() {
-    // let json = JSON.parse(xhr.response);
-    // console.log(json);
+    let json = JSON.parse(xhr.response);
+    if (json["Data"]["deliveryDate"] == []) {
+      alertNoShipments();
+    } else {
+      drawShipments(json["Data"]);
+    }
   };
   xhr.send(null);
-
-  shipments = [
-    {
-      id: 1,
-      pickupDate: "10/10/22",
-      deliveryDate: "02/04/22",
-      percentageComplete: 100,
-      currentVendorNumber: "9499994456",
-      journeyDistribution: [
-        ["truck", 20],
-        ["truck", 50],
-        ["truck", 30]
-      ]
-    },
-    {
-      id: 2,
-      pickupDate: "10/10/22",
-      deliveryDate: "02/04/22",
-      percentageComplete: 0,
-      currentVendorNumber: "9499994456",
-      journeyDistribution: [
-        ["truck", 20],
-        ["truck", 50],
-        ["truck", 30]
-      ]
-    },
-    {
-      id: 3,
-      pickupDate: "10/10/22",
-      deliveryDate: "02/04/22",
-      percentageComplete: 10,
-      currentVendorNumber: "9499994456",
-      journeyDistribution: [
-        ["truck", 20],
-        ["truck", 50],
-        ["truck", 30]
-      ]
-    },
-    {
-      id: 4,
-      pickupDate: "10/10/22",
-      deliveryDate: "02/04/22",
-      percentageComplete: 90,
-      currentVendorNumber: "9499994456",
-      journeyDistribution: [
-        ["truck", 20],
-        ["truck", 50],
-        ["truck", 30]
-      ]
-    }
-  ]
-
-  drawShipments(shipments);
 });
 
+function alertNoShipments() {
+  $('.shipments-container').append("<p>You don't have any shipments currently.</p>");
+}
+
 function drawShipments(shipments) {
-  for (let i = 0; i < shipments.length; i ++) {
+  console.log(shipments);
+  for (let i = 0; i < Object.keys(shipments).length; i ++) {
+    if (shipments[i]['journeyDistribution'] == "No Journey") {
+      continue;
+    }
     if (i == shipments.length-1) {
       $('.shipments-container').append("<div style='animation-delay: "+(i*50)+"ms; margin-bottom: 0;' class='shipment'></div>");
     } else {
@@ -71,9 +30,12 @@ function drawShipments(shipments) {
     }
     let current = $('.shipments-container .shipment').last();
     current.on('click', () => {
-      document.location = '/view_shipment/'+shipments[i].id;
+      document.location = '/view_shipment/'+i;
     });
-    current.append("<div class='topholder'><p>"+shipments[i].percentageComplete+"%</p><p>Shipment #"+shipments[i].id+"</p><a href='/view_shipment/"+shipments[i].id+"'>More Info</a></div>");
+
+    // Delete when all good
+    shipments[i].percentageComplete = Math.trunc(shipments[i]['path'][0]) % 100;
+    current.append("<div class='topholder'><p>"+shipments[i].percentageComplete+"%</p><p>Shipment #"+i+"</p><a href='/view_shipment/"+i+"'>More Info</a></div>");
 
     let journey = shipments[i].journeyDistribution;
     let middleholder = "<div class='middleholder'>";
@@ -92,11 +54,12 @@ function drawShipments(shipments) {
     current.append(middleholder);
 
     let bottomholder = "<div class='bottomholder'>";
-    bottomholder += "<p>"+shipments[i].pickupDate+"</p>";
+    bottomholder += "<p>"+shipments[i].pickUpDate+"</p>";
+    let number = "9199348695"
     if (shipments[i].percentageComplete == 100) {
       bottomholder += "<button class='completed-shipment-tag'>Completed</button>"
     } else {
-      bottomholder += "<button>Contact: "+shipments[i].currentVendorNumber+"</button>"
+      bottomholder += "<button>Contact: "+number+"</button>"
     }
     bottomholder += "<p>"+shipments[i].deliveryDate+"</p>";
     bottomholder += "</div>";

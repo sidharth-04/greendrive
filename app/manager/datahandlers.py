@@ -23,18 +23,15 @@ def get_vendor_data(username):
         "time": 0,
         "sustainability": 0
     }
-    url = "https://us-central1-eng-oven-342617.cloudfunctions.net/get_path"
+    url = "https://us-central1-eng-oven-342617.cloudfunctions.net/function-2"
     response = requests.post(url, params=info)
-    print(response.json())
-    # print(response.text)
-    # print(response.json())
-    return "works"
+    return response.json()
 
 def create_new_shipment(info):
     url = 'https://us-central1-eng-oven-342617.cloudfunctions.net/new_shipment'
+    print(info)
     response = requests.post(url, params=info)
     print(response.text)
     if response.text == "Invalid Request":
-        print("not valid")
         return False
     return True

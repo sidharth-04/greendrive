@@ -1,28 +1,26 @@
 $(document).ready(() => {
-  info = {
-  	pickupDate: "12/3/22",
-    deliveryDate: "22/3/22",
-  	percentageComplete: 80,
-  	carbonEmitted: 43,
-  	journeyDistribution: [
-      ["bike", 20, '1233234', 'fuel'],
-      ["truck", 50, '2324342', 'diesel'],
-      ["helicopter", 30, '1222344', 'hydrogen fusion']
-    ]
-  }
+  let id = $('.topholder h1').text().substr(-1);
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST','/view_shipment/'+id,true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onload = function() {
+    let json = JSON.parse(xhr.response);
+    addElements(json["Data"][id])
+  };
+  xhr.send(null);
+});
 
+function addElements(info) {
+  info.percentageComplete = Math.trunc(info['path'][0]) % 100;
   $('#completionstatus').text(info.percentageComplete+"% Completed");
   if (info.percentageComplete == 100) {
     $('.status-tag').text('Shipment Completed');
   } else {
     $('.status-tag').text('Shipment In Progress');
   }
-  $('.carbon-text').text(info.carbonEmitted+"g\nCarbon");
-  addElements();
-});
+  $('.carbon-text').text((info.percentageComplete*23 % 1000)+"g\nCarbon");
 
-function addElements() {
-  $('.midcontainer').append("<p>"+info.pickupDate+"</p>");
+  $('.midcontainer').append("<p>"+info.pickUpDate+"</p>");
   let progressholder = "<div class='progressholder'>";
   let journey = info.journeyDistribution;
   let leftToComplete = info.percentageComplete;
@@ -36,7 +34,8 @@ function addElements() {
     }
     progressholder += "<div class='journey-block' style='animation-delay: "+(i*50)+"ms; background: linear-gradient(to bottom, #A9F0D1 0% "+fillWidth+"%, white "+fillWidth+"% 100%); height: "+journey[i][1]+"%'>";
     progressholder += "<img src='../static/assets/"+journey[i][0]+".svg'>";
-    progressholder += "<button>Contact: "+journey[i][2]+"</button>"
+    let number = "9199348695";
+    progressholder += "<button>Contact: "+number+"</button>"
     progressholder += "</div>";
     if (i != journey.length-1) {
       progressholder += "<img id='connector' src='../static/assets/Connector.svg'>";

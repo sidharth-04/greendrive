@@ -6,6 +6,8 @@ $(document).ready(() => {
     let json = JSON.parse(xhr.response);
     if (json["Data"]["deliveryDate"] == []) {
       alertNoShipments();
+    } else if (Object.keys(json["Data"]).length == 0 || Object.keys(json["Data"]).length == 0)  {
+      alertNoShipments();
     } else {
       drawShipments(json["Data"]);
     }
@@ -14,7 +16,7 @@ $(document).ready(() => {
 });
 
 function alertNoShipments() {
-  $('.shipments-container').append("<p>You don't have any shipments currently.</p>");
+  $('.shipments-container').append("<p style='font-size: 6vw; text-align: center;'>You don't have any shipments currently.</p>");
 }
 
 function drawShipments(shipments) {
@@ -34,7 +36,7 @@ function drawShipments(shipments) {
     });
 
     // Delete when all good
-    shipments[i].percentageComplete = Math.trunc(shipments[i]['path'][0]) % 100;
+    shipments[i].percentageComplete = (Math.trunc(shipments[i]['path'][0]) * (i+1)) % 100;
     current.append("<div class='topholder'><p>"+shipments[i].percentageComplete+"%</p><p>Shipment #"+i+"</p><a href='/view_shipment/"+i+"'>More Info</a></div>");
 
     let journey = shipments[i].journeyDistribution;
@@ -55,7 +57,7 @@ function drawShipments(shipments) {
 
     let bottomholder = "<div class='bottomholder'>";
     bottomholder += "<p>"+shipments[i].pickUpDate+"</p>";
-    let number = "9199348695"
+    let number = "91933592"
     if (shipments[i].percentageComplete == 100) {
       bottomholder += "<button class='completed-shipment-tag'>Completed</button>"
     } else {

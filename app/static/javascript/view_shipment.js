@@ -1,3 +1,36 @@
+// const DATA = {
+//     "deliveryDate": "03/09/2022",
+//     "id": "03/01/2022",
+//     "journeyDistribution": [
+//         [
+//             "bike",
+//             20
+//         ],
+//         [
+//             "ship",
+//             40
+//         ],
+//         [
+//             "lorry",
+//             40
+//         ]
+//     ],
+//     "path": [
+//         560.4337856505688,
+//         "4"
+//     ],
+//     "pickUpDate": "03/01/2022",
+//     "percentageComplete": 40,
+//     "pickUpLocation": [
+//         18.5492471,
+//         73.9424232
+//     ],
+//     "destinationLocation": [
+//         18.5432183,
+//         73.5846743
+//     ]
+// }
+
 $(document).ready(() => {
   let id = $('.topholder h1').text().substr(-1);
   let xhr = new XMLHttpRequest();
